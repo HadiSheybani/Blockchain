@@ -10,22 +10,10 @@ from usecase.blockchain2dict import BlockChain2Dict
 class TestBlockChain2Dict:
 
     def test_GivenABlockChainWhenCallConvertThenItShouldReturnProperDict(self):
-        block1 = Mock(return_value = Block)
-        block2 = Mock(return_value = Block)
+        block1 = self.__mock_block(1, 1000, "hello", "pre_hash1", "block_hash1")
+        block2 = self.__mock_block(2, 2000, "world", "pre_hash2", "block_hash2")
         block2dict = Block2Dict()
         blockchain = Mock(return_value = BlockChain)
-
-        block1.index = 1
-        block1.time_stamp = 1000
-        block1.data = "hello"
-        block1.pre_hash = "pre_hash1"
-        block1.block_hash = "block_hash1"
-
-        block2.index = 2
-        block2.time_stamp = 2000
-        block2.data = "world"
-        block2.pre_hash = "pre_hash2"
-        block2.block_hash = "block_hash2"
 
         blockchain.get_chain.return_value = [block1, block2]
 
