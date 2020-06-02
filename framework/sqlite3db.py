@@ -9,4 +9,5 @@ class Sqlite3Database(Database):
         con = sqlite3.connect(self.__db_name)
         cursor = con.cursor()
         cursor.execute(command)
+        con.commit()
         con.close()
